@@ -1,5 +1,5 @@
 module "vpc" {
-  source  = "app.terraform.io/${var.TFE_ORG_NAME}/vpc/aws"
+  source  = "app.terraform.io/acfaria-hashicorp/vpc/aws"
   version = "1.0.0"
 
   name = "test-environment-vpc"
