@@ -3,5 +3,5 @@ provider "tfe" {
 }
 
 provider "aws" {
-
+  region = "us-east-2"
 }
