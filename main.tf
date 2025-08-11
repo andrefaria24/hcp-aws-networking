@@ -1,3 +1,4 @@
+# Define VPC
 module "vpc" {
   source  = "app.terraform.io/acfaria-hashicorp/vpc/aws"
   version = "1.0.0"
@@ -11,4 +12,10 @@ module "vpc" {
 
   enable_nat_gateway = true
   enable_vpn_gateway = false
+}
+
+# Create RDS DB subnet group
+resource "aws_db_subnet_group" "default" {
+  name       = "main"
+  subnet_ids = module.vpc.private_subnets
 }
