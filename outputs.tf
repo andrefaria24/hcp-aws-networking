@@ -8,7 +8,7 @@ output "private_subnets" {
   description = "Private VPC subnets"
 }
 
-output "db_subnet_group" {
-  value = aws_db_subnet_group.default
+output "db_subnet_group_name" {
+  value = aws_db_subnet_group.default.name
   description = "Default database subnet group"
 }
