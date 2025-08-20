@@ -17,7 +17,7 @@ module "vpc" {
 # Create DB subnet group
 resource "aws_db_subnet_group" "db" {
   name       = "db"
-  subnet_ids = module.vpc.private_subnets
+  subnet_ids = module.vpc.public_subnets
 }
 
 # Create MySQL security group
