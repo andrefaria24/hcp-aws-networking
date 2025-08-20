@@ -14,8 +14,28 @@ module "vpc" {
   enable_vpn_gateway = false
 }
 
-# Create RDS DB subnet group
-resource "aws_db_subnet_group" "default" {
-  name       = "main"
+# Create DB subnet group
+resource "aws_db_subnet_group" "db" {
+  name       = "db"
   subnet_ids = module.vpc.private_subnets
+}
+
+# Create Postgresql security group
+resource "aws_security_group" "postgresql" {
+  name   = "postgresql"
+  vpc_id = module.vpc.vpc_id
+
+  ingress {
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+  egress {
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }

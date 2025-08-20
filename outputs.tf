@@ -9,6 +9,6 @@ output "private_subnets" {
 }
 
 output "db_subnet_group_name" {
-  value = aws_db_subnet_group.default.name
+  value       = aws_db_subnet_group.db.name
   description = "Default database subnet group"
 }
